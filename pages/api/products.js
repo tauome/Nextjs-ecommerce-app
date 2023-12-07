@@ -8,29 +8,30 @@ export default async function handle(req, res) {
     if (method === 'GET') {
 
         if (req.query?.id) {
-            res.json(await Product.findOne({_id: req.query?.id}))
+            return res.json(await Product.findOne({_id: req.query?.id}));
         }
-        res.json(await Product.find()); 
+        return res.json(await Product.find()); 
     }
 
     if (method === 'POST') {
-        const {name, description, price, images} = req.body;
+        const {name, description, price, images, category, properties} = req.body;
         const productDoc = await Product.create({
-            name, description, price, images
+            name, description, price, images, category, properties
         })
-        res.json(productDoc); 
+        return res.json(productDoc); 
     }
 
     if (method === 'PUT') {
-        const {_id, name, description, price, images} = req.body;
-        await Product.updateOne({_id}, {name, description, price, images});
-        res.json(true); 
+        const {_id, name, description, price, images, category, properties} = req.body;
+
+        await Product.updateOne({_id}, {name, description, price, images, category, properties});
+        return res.json(true); 
     }
 
     if (method === 'DELETE') {
         if (req.query?.id) {
             await Product.deleteOne({_id: req.query.id});
-            res.json(true); 
+            return res.json(true); 
         }
     }
 }
