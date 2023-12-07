@@ -102,16 +102,7 @@ export default function ProductForm({
           ))}
         </select>
         {propertiesToFill.length > 0 && propertiesToFill.map(p => (
-            // <div>
-            //     <label>{p.name[0].toUpperCase()+p.name.slice(1)}</label>
-            //     <select>
-            //         {p.values.map((values) => (
-            //             <option key={values} value={values}>{values}</option>
-            //         )
-            //         )}
-            //     </select>
-            // </div>
-            <div key={p.name} className="">
+            <div key={p.name}>
                 <label>{p.name[0].toUpperCase()+p.name.substring(1)}</label>
                 <div>
                 <select value={productProperties[p.name]}
@@ -126,16 +117,14 @@ export default function ProductForm({
                 </div>
             </div>
         ))}
-        <label>
-          Photos
-        </label>
+        <label>Photos</label>
         <div className="mb-2 flex flex-wrap gap-1">
           <ReactSortable
             list={images}
             className="flex flex-wrap gap-1"
             setList={updateImagesOrder}>
             {!!images?.length && images.map(link => (
-              <div key={link} className="h-24 bg-white p-4 shadow-sm rounded-sm border border-gray-200">
+              <div key={link} className="h-24 bg-white p-2 shadow-sm rounded-sm border border-gray-200">
                 <img src={link} alt="" className="rounded-lg"/>
               </div>
             ))}
