@@ -8,6 +8,8 @@ const productSchema = new Schema({
     images: {type: [String]},
     category: {type: String, ref: 'Category'},
     properties: {type: Object}
+}, {
+    timestamps: true
 })
 
 export const Product = models.Product || model('Product', productSchema);
