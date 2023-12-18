@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Layout from "@/components/layout";
 
-export default function deleteProductPage () {
+export default function DeleteProductPage () {
     const [productInfo, setProductInfo] = useState(null); 
     const router = useRouter(); 
     const {id} =  router.query; 
