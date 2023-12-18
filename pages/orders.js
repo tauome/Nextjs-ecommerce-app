@@ -23,9 +23,8 @@ export default function OrdersPage() {
                 </thead>
                 <tbody>
                     {orders.length > 0 && orders.map(order => {
-                        console.log('order', order);
                         return (
-                            <tr>
+                            <tr key={order._id}> 
                                 <td>{new Date(order.createdAt).toLocaleString()}</td>
                                 <td className={order.paid ? 'text-green-600' : 'text-red-600'}>{order.paid ? 'Yes' : 'No'}</td>
                                 <td>
@@ -35,7 +34,7 @@ export default function OrdersPage() {
                                 {order.streeAddress} 
                                 </td>
                                 {order.line_items.map(item => (
-                                    <td>{item.price_data?.product_data?.name} * {item.quantity}</td>
+                                    <td key={item.price_data?.product_data?.name}>{item.price_data?.product_data?.name} * {item.quantity}</td>
                                 ))}
                             </tr>
                         )
