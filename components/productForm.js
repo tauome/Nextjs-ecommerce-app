@@ -84,6 +84,11 @@ export default function ProductForm({
     }
   }
   
+  function removeImage(img) {
+    setImages(oldImages => {
+      return oldImages.filter(i => i !== img);
+    });
+  }
 
   return (
       <form onSubmit={saveProduct}>
@@ -125,6 +130,9 @@ export default function ProductForm({
             setList={updateImagesOrder}>
             {!!images?.length && images.map(link => (
               <div key={link} className="h-24 bg-white p-2 shadow-sm rounded-sm border border-gray-200">
+                <div className="text-right">
+                  <button className="bg-gray-400 text-white w-5 h-5 text-xs rounded-sm" onClick={() => removeImage(link)}>X</button>
+                </div>
                 <img src={link} alt="" className="rounded-lg"/>
               </div>
             ))}
