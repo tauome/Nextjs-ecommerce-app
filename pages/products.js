@@ -7,7 +7,7 @@ export default function Products(){
     const [products, setProducts] = useState([]); 
 
     useEffect(()=> {
-        axios.get('/api/products').then(res => {
+        axios.get('https://tau-ecommerce-app.vercel.app/api/products').then(res => {
             setProducts(res.data);
         })
     }, []);

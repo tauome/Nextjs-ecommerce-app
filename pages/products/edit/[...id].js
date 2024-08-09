@@ -13,7 +13,7 @@ export default function EditProductPage () {
         if (!id){
             return;
         }
-        axios.get('/api/products/?id='+id).then(res => {
+        axios.get('https://tau-ecommerce-app.vercel.app/api/products/?id='+id).then(res => {
             console.log(res.data);
             setProductInfo(res.data); 
         })

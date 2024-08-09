@@ -13,7 +13,7 @@ function Categories({swal}) {
     fetchCategories();
   }, [])
   function fetchCategories() {
-    axios.get('/api/categories').then(result => {
+    axios.get('https://tau-ecommerce-app.vercel.app/api/categories').then(result => {
       setCategories(result.data);
     });
   }
@@ -29,10 +29,10 @@ function Categories({swal}) {
     };
     if (editedCategory) {
       data._id = editedCategory._id;
-      await axios.put('/api/categories', data);
+      await axios.put('https://tau-ecommerce-app.vercel.app/api/categories', data);
       setEditedCategory(null);
     } else {
-      await axios.post('/api/categories', data);
+      await axios.post('https://tau-ecommerce-app.vercel.app/api/categories', data);
     }
     setName('');
     setParentCategory('');
@@ -62,7 +62,7 @@ function Categories({swal}) {
     }).then(async result => {
       if (result.isConfirmed) {
         const {_id} = category;
-        await axios.delete('/api/categories?_id='+_id);
+        await axios.delete('https://tau-ecommerce-app.vercel.app/api/categories?_id='+_id);
         fetchCategories();
       }
     });

@@ -16,7 +16,6 @@ export const authOptions = {
    adapter: MongoDBAdapter(clientPromise),
    callbacks: {
     session: ({ session, token, user}) => {
-      console.log(session);
       if (adminEmails.includes(session?.user?.email)){
           return session; 
       }
