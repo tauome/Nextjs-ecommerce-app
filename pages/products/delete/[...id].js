@@ -13,7 +13,7 @@ export default function DeleteProductPage () {
     }
 
     async function deleteProduct() {
-        await axios.delete('https://tau-ecommerce-app.vercel.app/api/products?id='+id);
+        await axios.delete('/api/products?id='+id);
         goBack(); 
     }
 
@@ -21,7 +21,7 @@ export default function DeleteProductPage () {
         if (!id){
             return;
         }
-        axios.get('https://tau-ecommerce-app.vercel.app/api/products?id='+id).then(res => {
+        axios.get('/api/products?id='+id).then(res => {
             setProductInfo(res.data); 
         })
     }, [id])

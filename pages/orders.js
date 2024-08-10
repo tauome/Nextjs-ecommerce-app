@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 export default function OrdersPage() {
     const [orders, setOrders] = useState([]) 
     useEffect(()=> {
-        axios.get('https://tau-ecommerce-app.vercel.app/api/orders').then(res => {
+        axios.get('/api/orders').then(res => {
             setOrders(res.data); 
         })
     }, [])
